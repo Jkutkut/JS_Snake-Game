@@ -8,5 +8,7 @@ Clasic Snake, with green color.
 ### Single Rainbow:
 Snake as a rainbow.
 
+**[Try me!](https://jkutkut.github.io/JS_Snake-Game/)**
+
 ### Multi Rainbow:
 Snake with raimbow theme.
