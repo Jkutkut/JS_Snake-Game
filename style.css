@@ -1,0 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffffff;
+  font-family: Merriweather;
+}
+canvas {
+  display: block;
+}
+h3{
+  margin-left:10px;
+}
+a {
+  margin-left:25px;
+}
+
+#score {
+  margin-left:80px;
+}
