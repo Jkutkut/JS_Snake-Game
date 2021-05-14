@@ -38,11 +38,8 @@ function setup() {
   createCanvas(500, 500);
   frameRate(8);
   w = width / rowCol;
-  // snake = new MultdipleRainbowSnake(rowCol / 2, rowCol / 2);  
-  snake = new RainbowSnake(rowCol / 2, rowCol / 2);  
-  // snake = new Snake(rowCol / 2, rowCol / 2, [0, 0, 180]);  
-  // snake = new snakeBody(rowCol / 2, rowCol / 2);  
-  // snake = new snakeTypes[selectedSnake](rowCol / 2, rowCol / 2);
+   
+  snake = new snakeTypes[selectedSnake](rowCol / 2, rowCol / 2);
   
   apple = [];
   score = 0;
