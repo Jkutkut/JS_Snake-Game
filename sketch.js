@@ -1,7 +1,7 @@
 var snake;
 var rowCol = 20;
 var w;
-var nApple = 1;
+var nApple = 6;
 var apple = [];
 
 
@@ -14,7 +14,8 @@ function setup() {
   createCanvas(500, 500);
   frameRate(8);
   w = width / rowCol;
-  snake = new snakeBody(rowCol / 2, rowCol / 2);  
+  snake = new Snake(rowCol / 2, rowCol / 2);  
+  // snake = new snakeBody(rowCol / 2, rowCol / 2);  
   
   
   score = 0;
@@ -102,7 +103,8 @@ function draw() {
 
 function keyPressed() {
   if(conv.has(keyCode)){//w, a, s, d.
-    snake.setDirection(conv.get(keyCode));
+    snake.direction = conv.get(keyCode);
+    // snake.setDirection(conv.get(keyCode));
   }
   else if(keyCode == 82){//if r pressed -> reset game
     setup();
