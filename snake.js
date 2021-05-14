@@ -90,16 +90,31 @@ class Snake {
 class RainbowSnake extends Snake {
     constructor(x, y) {
         super(x, y);
-        this.initialColor = {
+    }
+
+    /**
+     * Starting color of the snake (the color of the head).
+     * @return (Obj) initial color: {r: R, g: G, b:B}.
+     */
+    get initialColor() {
+        return {
             r: 255,
             g: 0,
             b: 0
         };
-        this.initialColorDelta = {
+    }
+
+    /**
+     * The snake will change its color following this initial direction.
+     * @see colorIncrement
+     * @return (Obj) delta color: {r: R, g: G, b:B}; where R,G and B are either 1 or 0.
+     */
+    initialColorDelta() {
+        return {
             r: 0,
             g: 1,
             b: 0
-        }
+        };
     }
 
     get colorIncrement() {
@@ -168,20 +183,26 @@ class RainbowSnake extends Snake {
 class MultipleRainbowSnake extends RainbowSnake {
     constructor (x, y, increment=30) {
         super(x, y);
-        this.initialColor = {
+        this._increment = increment;
+    }
+
+    get initialColor() {
+        return {
             r: 153,
             g: 153,
             b: 255
         };
-        this.initialColorDelta = {
+    };
+
+    get initialColorDelta() {
+        return {
             r: 1,
             g: 0,
             b: 0
-        }
-        this._increment = increment;
+        };
     }
 
     get colorIncrement() {
-        return this._increment;
+        return this._increment; // constant
     }
 }
