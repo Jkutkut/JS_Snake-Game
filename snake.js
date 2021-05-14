@@ -90,6 +90,20 @@ class Snake {
 class RainbowSnake extends Snake {
     constructor(x, y) {
         super(x, y);
+        this.initialColor = {
+            r: 255,
+            g: 0,
+            b: 0
+        };
+        this.initialColorDelta = {
+            r: 0,
+            g: 1,
+            b: 0
+        }
+    }
+
+    get colorIncrement() {
+        return Math.floor(6 * 255 / this.body.length);
     }
 
     show() {
@@ -98,11 +112,13 @@ class RainbowSnake extends Snake {
         
         //Single rainbow
         //in total: 6 * 255 values (regular hsv)
-        let r = 255;
-        let g = 0;
-        let b = 0;
-        let increment = Math.floor(6 * 255 / this.body.length);
-        let dr = 0, dg = increment, db = 0;
+        let r = this.initialColor.r;
+        let g = this.initialColor.g;
+        let b = this.initialColor.b;
+        let increment = this.colorIncrement;
+        let dr = this.initialColorDelta.r * increment;
+        let dg = this.initialColorDelta.g * increment;
+        let db = this.initialColorDelta.b * increment;
 
         
         for(let i = 0; i < this.body.length; i++){
@@ -149,69 +165,23 @@ class RainbowSnake extends Snake {
     }
 }
 
-class MultipleRainbowSnake extends Snake {
+class MultipleRainbowSnake extends RainbowSnake {
     constructor (x, y, increment=30) {
         super(x, y);
         this.initialColor = {
-            x: 153,
+            r: 153,
             g: 153,
             b: 255
         };
-        this.increment = increment;
+        this.initialColorDelta = {
+            r: 1,
+            g: 0,
+            b: 0
+        }
+        this._increment = increment;
     }
 
-    show() {
-        stroke(0);
-        strokeWeight(2);
-        
-        
-        //multi rainbow
-        let r = this.initialColor.x;
-        let g = this.initialColor.g;
-        let b = this.initialColor.b;
-        let increment = this.increment;
-        let dr = increment, dg = 0, db = 0;
-        
-        for(let i = 0; i < this.body.length; i++){
-            fill(color(r, g, b));
-            rect(this.body[i][0] * w, this.body[i][1] * w, w, w);
-
-            r += dr;
-            g += dg;
-            b += db;
-
-            if(r > 255){//r max
-                r = 255;
-                dr = 0;
-                db = -increment;
-            }
-            else if(g > 255){//g max
-                g = 255;
-                dg = 0;
-                dr = -increment;
-                }
-            else if(b > 255){//b max
-                b = 255;
-                db = 0;
-                dg = -increment;
-            }
-
-
-            else if(r < 0){//r min
-                r = 0;
-                dr = 0;
-                db = increment;
-            }
-            else if(g < 0){//g min
-                g = 0;
-                dg = 0;
-                dr = increment;
-            }
-            else if(b < 0){//b min
-                b = 0;
-                dg = 0;
-                dg = increment;
-            }
-        }
+    get colorIncrement() {
+        return this._increment;
     }
 }
