@@ -1,4 +1,4 @@
-class Snake {
+class SnakePrototype {
     constructor(x, y) {
         this._direction = [0, 1];
         this._body = [[x, y]];
@@ -87,7 +87,7 @@ class Snake {
     show() {}
 }
 
-class RainbowSnake extends Snake {
+class RainbowSnake extends SnakePrototype {
     constructor(x, y) {
         super(x, y);
     }
@@ -205,4 +205,34 @@ class MultipleRainbowSnake extends RainbowSnake {
     get colorIncrement() {
         return this._increment; // constant
     }
+}
+
+class Snake extends SnakePrototype {
+    constructor(x, y, c=[0, 255, 0]) {
+        super(x, y);
+
+        this.color = c;
+    }
+
+    set color(c) {
+        if (!(c instanceof Array) || c.length != 3) {
+            throw new Error("The color is not valid");
+        }
+        this._color = c;
+    }
+
+    get color() {
+        return this._color;
+    }
+
+    show() {
+        push();
+        stroke(0);
+        strokeWeight(2);
+        fill(...this.color);
+        for(let i = 0; i < this.body.length; i++){
+          rect(this.body[i][0] * w, this.body[i][1] * w, w, w);
+        }
+        pop();
+      }
 }
