@@ -14,12 +14,15 @@ class Snake {
     }
 
     /**
-     * Array with the 2D coordinates of the 
+     * Array with the 2D coordinates of the direction.
      */
     get direction() {
         return this._direction;
     }
 
+    /**
+     * Makes the snake grow one unit.
+     */
     grow() {
         this.needToGrow++;
     }
@@ -39,7 +42,10 @@ class Snake {
     }
 
 
-
+    /**
+     * Moves the snake one unit in the current direction.
+     * @see Snake.direction
+     */
     move() {
         if(!this.checkError()){
             this.body.unshift([this.body[0][0] + this.direction[0], this.body[0][1] + this.direction[1]]);
@@ -51,7 +57,7 @@ class Snake {
               this.needToGrow--;
             }
           }
-          this.show();
+          this.show(); // Update the view.
     }
 
 
@@ -75,6 +81,17 @@ class Snake {
         return false;
     }
 
+    /**
+     * Represents the snake on the p5.js canvas.
+     */
+    show() {}
+}
+
+
+class RainbowSnake extends Snake {
+    constructor(x, y) {
+        super(x, y);
+    }
 
     show() {
         stroke(0);
