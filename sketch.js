@@ -1,8 +1,10 @@
 var snake;
+var selectedSnake = 0;
+var snakeTypes = [RainbowSnake, MultipleRainbowSnake, Snake];
 var rowCol = 20;
 var w;
-var nApple = 6;
-var apple = [];
+var nApple = 2;
+var apple;
 
 
 var score, scoreHTML, highscore = 0,startDelay;
@@ -10,14 +12,39 @@ var score, scoreHTML, highscore = 0,startDelay;
 var conv = new Map();
 var convDebug = new Map();
 
+function preload() {
+  // the selector will match all input controls of type :checkbox
+  // and attach a click event handler 
+  $("input:checkbox").on('click', function() {
+    let $box = $(this);
+    if ($box.is(":checked")) {
+      let group = "input:checkbox[name='" + $box.attr("name") + "']"; // get  group of checkboxes
+
+      $(group).prop("checked", false); // uncheck all
+      $box.prop("checked", true); // Check the selected
+
+      selectedSnake = Number.parseInt($box.attr("value"));
+      setup();
+    } 
+    else {
+      $box.prop("checked", false);
+    }
+  });
+
+  $("input:checkbox")[0].checked = true; // On start, check the first option
+}
+
 function setup() {
   createCanvas(500, 500);
   frameRate(8);
   w = width / rowCol;
-  snake = new Snake(rowCol / 2, rowCol / 2);  
+  // snake = new MultdipleRainbowSnake(rowCol / 2, rowCol / 2);  
+  snake = new RainbowSnake(rowCol / 2, rowCol / 2);  
+  // snake = new Snake(rowCol / 2, rowCol / 2, [0, 0, 180]);  
   // snake = new snakeBody(rowCol / 2, rowCol / 2);  
+  // snake = new snakeTypes[selectedSnake](rowCol / 2, rowCol / 2);
   
-  
+  apple = [];
   score = 0;
   startDelay = 30;
   
@@ -40,9 +67,9 @@ function setup() {
 
 function draw() {
   if(score !== -1){//if not in Game Over
+    fill(255);
     for(let i = 0; i < rowCol; i++){//draw grid
       for(let j = 0; j < rowCol; j++){
-        fill(255);
         rect(i * w, j * w, w, w);
       }
     }

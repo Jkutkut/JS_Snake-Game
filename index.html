@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html>
+  <head>
+    <title>SnakeGame</title>
     <!-- STYLE -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather">
@@ -9,16 +11,29 @@
     <script src="snake.js"></script>
     <!-- <script src="snakeBody.js"></script> -->
     <script src="sketch.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css">
    
   </head>
   <body>
     <div class="text-left">
-      <h1>Rainbow Snake</h1>
+      <h1>Snake game</h1>
       <h3>· Controls:</h3>
       <a>Move snake with W, A, S, D.</a>
       <br>
       <a>Reset game with R.</a>
-      <br><br>
+      <br>
+      <h3>· Settings:</h3>
+      <div class="sub">
+        <label><input type="checkbox" class="radio" value="0" name="fooby[1][]"/>Rainbow</label>
+        <label><input type="checkbox" class="radio" value="1" name="fooby[1][]"/>MultiRainbow</label>
+        <label><input type="checkbox" class="radio" value="2" name="fooby[1][]"/>Color</label>
+      </div>
+      
+      
+      <br>
       Made by Jkutkut
       
       <a id="score"></a>

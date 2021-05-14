@@ -10,8 +10,10 @@ canvas {
 h3{
   margin-left:10px;
 }
-a {
+
+.sub, a {
   margin-left:25px;
+
 }
 
 #score {
