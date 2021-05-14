@@ -109,7 +109,7 @@ class RainbowSnake extends SnakePrototype {
      * @see colorIncrement
      * @return (Obj) delta color: {r: R, g: G, b:B}; where R,G and B are either 1 or 0.
      */
-    initialColorDelta() {
+    get initialColorDelta() {
         return {
             r: 0,
             g: 1,
@@ -137,9 +137,11 @@ class RainbowSnake extends SnakePrototype {
 
         
         for(let i = 0; i < this.body.length; i++){
-            fill(color(r, g, b));
+            push();
+            fill(r, g, b);
             rect(this.body[i][0] * w, this.body[i][1] * w, w, w);
-
+            pop();
+            
             r += dr;
             g += dg;
             b += db;
