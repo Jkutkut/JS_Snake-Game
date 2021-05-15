@@ -4,7 +4,7 @@ var snakeTypes = [RainbowSnake, MultipleRainbowSnake, Snake];
 var currentColor = [0, 255, 0];
 var rowCol = 20;
 var w;
-var nApple = 2;
+var nApple = 200;
 var apple;
 
 
@@ -19,7 +19,7 @@ function preload() {
     $("input:checkbox").on('click', function() {
         let $box = $(this);
         if ($box.is(":checked")) {
-            let group = "input:checkbox[name='" + $box.attr("name") + "']"; // get  group of checkboxes
+            let group = "input:checkbox[name='snakeType']"; // get  group of checkboxes
 
             $(group).prop("checked", false); // uncheck all
             $box.prop("checked", true); // Check the selected
@@ -34,7 +34,7 @@ function preload() {
             setup();
         } 
         else {
-            $box.prop("checked", false);
+            $box.prop("checked", true);
         }
     });
 
