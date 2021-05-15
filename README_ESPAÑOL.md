@@ -1,14 +1,7 @@
 # Js_Snake-Game
 
-El juego "Snake" creado usando JavaScript (P5). Con distintos colores y un modo arcoiris dinámico hecho a partir de los valores rgbs
-Este repositorio contiene 3 versiones distintas:
+El juego "Snake" creado usando JavaScript (P5) y JQuery.
+Este repositorio contiene versiones diferentes de serpientes con distintos temas y colores. También contine un menú para cambiar de manera dinámica parámetros como la dificultad o el tema de la serpiente.
 
 
-### Verde:
-Snake clásico, con color verde.
-
-### Un arcoiris:
-Snake formando el arcoiris.
-
-### Multi Rainbow:
-Snake compuesto con los colores del arcoiris.
+**[Jugar ahora!](https://jkutkut.github.io/JS_Snake-Game/)**
