@@ -88,7 +88,6 @@ function preload() {
   });
 
   $('#colorPdiv').hide();
-  // $('#colorP').css("display", "none");
   $("input:checkbox")[0].checked = true; // On start, check the first option
 }
 
@@ -186,10 +185,8 @@ function draw() {
 function keyPressed() {
   if(conv.has(keyCode)){//w, a, s, d.
     snake.direction = conv.get(keyCode);
-    // snake.setDirection(conv.get(keyCode));
   }
   else if(keyCode == 82){//if r pressed -> reset game
     setup();
   }
-  //console.log(convDebug.get(keyCode));
 }
