@@ -12,7 +12,7 @@ h3{
 }
 
 .sub, a {
-  margin-left:25px;
+  margin-left:var(--ml, 25px);
 
 }
 
