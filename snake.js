@@ -231,7 +231,6 @@ class Snake extends SnakePrototype {
         push();
         stroke(0);
         strokeWeight(2);
-        console.log(this.color)
         fill(...this.color);
         for(let i = 0; i < this.body.length; i++){
           rect(this.body[i][0] * w, this.body[i][1] * w, w, w);
