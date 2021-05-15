@@ -1,6 +1,7 @@
 var snake;
 var selectedSnake = 0;
 var snakeTypes = [RainbowSnake, MultipleRainbowSnake, Snake];
+var currentColor = [0, 255, 0];
 var rowCol = 20;
 var w;
 var nApple = 2;
@@ -24,6 +25,12 @@ function preload() {
       $box.prop("checked", true); // Check the selected
 
       selectedSnake = Number.parseInt($box.attr("value"));
+      if (selectedSnake == 2) {
+        $('#colorPdiv').show();
+      }
+      else {
+        $('#colorPdiv').hide();
+      }
       setup();
     } 
     else {
@@ -31,6 +38,57 @@ function preload() {
     }
   });
 
+  $('#colorP').minicolors({
+    // animation speed
+    animationSpeed: 50,
+
+    // easing function
+    animationEasing:'swing',
+
+    // defers the change event from firing while the user makes a selection
+    changeDelay: 0,
+
+    // hue, brightness, saturation, or wheel
+    control:'wheel',
+
+    // default color
+    defaultValue:'#00FF00',
+
+    // hex or rgb
+    format:'rgb',
+
+    // show/hide speed
+    showSpeed: 100,
+    hideSpeed: 100,
+
+    // is inline mode?
+    inline:false,
+
+    // a comma-separated list of keywords that the control should accept (e.g. inherit, transparent, initial).
+    keywords:'',
+
+    // uppercase or lowercase
+    letterCase:'lowercase',
+
+    // enables opacity slider
+    opacity:false,
+    
+    // additional theme class
+    theme:'default',
+
+    // an array of colors that will show up under the main color <a href="https://www.jqueryscript.net/tags.php?/grid/">grid</a>
+    swatches: [],
+
+    // Fires when the color picker is hidden.
+    hide: function() {
+      let c = $("#colorP").attr("value");
+      currentColor = c.substring(4, c.length-1).replace(/ /g, '').split(',');
+      setup();
+    }
+  });
+
+  $('#colorPdiv').hide();
+  // $('#colorP').css("display", "none");
   $("input:checkbox")[0].checked = true; // On start, check the first option
 }
 
@@ -38,8 +96,8 @@ function setup() {
   createCanvas(500, 500);
   frameRate(8);
   w = width / rowCol;
-   
-  snake = new snakeTypes[selectedSnake](rowCol / 2, rowCol / 2);
+
+  snake = new snakeTypes[selectedSnake](rowCol / 2, rowCol / 2, currentColor);
   
   apple = [];
   score = 0;

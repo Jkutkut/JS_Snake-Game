@@ -3,6 +3,7 @@
     <title>SnakeGame</title>
     <!-- STYLE -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="lib/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather">
     <meta charset="utf-8">
     
@@ -13,8 +14,8 @@
     <script src="sketch.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css">
+    <script src="lib/jquery.minicolors.min.js"></script>
+
    
   </head>
   <body>
@@ -30,6 +31,10 @@
         <label><input type="checkbox" class="radio" value="0" name="fooby[1][]"/>Rainbow</label>
         <label><input type="checkbox" class="radio" value="1" name="fooby[1][]"/>MultiRainbow</label>
         <label><input type="checkbox" class="radio" value="2" name="fooby[1][]"/>Color</label>
+
+        <label id="colorPdiv">
+          <input type="hidden" id="colorP" value="#00FF00">
+        </label>
       </div>
       
       
