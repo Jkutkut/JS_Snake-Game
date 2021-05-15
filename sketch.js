@@ -75,10 +75,7 @@ function preload() {
 
         // additional theme class
         theme:'default',
-
-        // an array of colors that will show up under the main color <a href="https://www.jqueryscript.net/tags.php?/grid/">grid</a>
-        swatches: [],
-
+        
         // Fires when the color picker is hidden.
         hide: function() {
             let c = $("#colorP").attr("value");
