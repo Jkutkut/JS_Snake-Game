@@ -35,6 +35,12 @@ class SnakePrototype {
      * @todo
      */
     set direction(dir) {
+        let nextMove = [this.body[0][0] + dir[0], this.body[0][1] + dir[1]];
+        for (let p of this.body) {
+            if (nextMove == p) {
+                return;
+            }
+        }
 
         if(dir[0] + this.direction[0] !== 0 && dir[1] + this.direction[1] !== 0){
             this._direction = dir;
@@ -117,6 +123,9 @@ class RainbowSnake extends SnakePrototype {
         };
     }
 
+    /**
+     * The amount of color changed on each piece.
+     */
     get colorIncrement() {
         return Math.floor(6 * 255 / this.body.length);
     }
@@ -183,9 +192,9 @@ class RainbowSnake extends SnakePrototype {
 }
 
 class MultipleRainbowSnake extends RainbowSnake {
-    constructor (x, y, increment=30) {
+    constructor (x, y) {
         super(x, y);
-        this._increment = increment;
+        this._increment = 30;
     }
 
     get initialColor() {
