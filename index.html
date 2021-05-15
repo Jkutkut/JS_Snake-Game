@@ -20,28 +20,43 @@
   </head>
   <body>
     <div class="text-left">
-      <h1>Snake game</h1>
+      <h1>· Snake game</h1>
       <h3>· Controls:</h3>
       <a>Move snake with W, A, S, D.</a>
       <br>
       <a>Reset game with R.</a>
       <br>
       <h3>· Settings:</h3>
+      
+
       <div class="sub">
-        <label><input type="checkbox" class="radio" value="0" name="fooby[1][]"/>Rainbow</label>
-        <label><input type="checkbox" class="radio" value="1" name="fooby[1][]"/>MultiRainbow</label>
-        <label><input type="checkbox" class="radio" value="2" name="fooby[1][]"/>Color</label>
+        <h4 style="padding-left: 0px;">Type of snake:</h4>
+        
+        <label><input type="checkbox" class="radio" value="0" name="snakeType"/>Rainbow</label>
+        <label><input type="checkbox" class="radio" value="1" name="snakeType"/>MultiRainbow</label>
+        <label><input type="checkbox" class="radio" value="2" name="snakeType"/>Color</label>
 
         <label id="colorPdiv">
           <input type="hidden" id="colorP" value="#00FF00">
         </label>
       </div>
+
+      <div class="sub">
+        <h4 style="padding-left: 0px;">Game difficulty:</h4>
+        
+        <label><input type="checkbox" class="radio" value="1" name="difficulty"/>Classic</label>
+        <label><input type="checkbox" class="radio" value="200" name="difficulty"/>Very Easy</label>
+        <label><input type="checkbox" class="radio" value="10" name="difficulty"/>Easy</label>
+        <label><input type="checkbox" class="radio" value="5" name="difficulty"/>Normal</label>
+        <label><input type="checkbox" class="radio" value="3" name="difficulty"/>Hard</label>
+      </div>
       
       
-      <br>
-      Made by Jkutkut
+      <br><br>
+      Made by <a href="https://github.com/Jkutkut/Jkutkut-projects" style="--ml: 0;"><i>Jkutkut</i></a>
       
-      <a id="score"></a>
+      
+      <strong id="score"></strong>
     </div>
   
 
