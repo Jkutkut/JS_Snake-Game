@@ -4,7 +4,7 @@ var snakeTypes = [RainbowSnake, MultipleRainbowSnake, Snake];
 var currentColor = [0, 255, 0];
 var rowCol = 20;
 var w;
-var nApple = 200;
+var nApple = 1;
 var apple;
 
 
@@ -14,9 +14,7 @@ var conv = new Map();
 var convDebug = new Map();
 
 function preload() {
-    // the selector will match all input controls of type :checkbox
-    // and attach a click event handler 
-    $("input:checkbox").on('click', function() {
+    $("input:checkbox[name='snakeType']").on('click', function() { // Snake selection
         let $box = $(this);
         if ($box.is(":checked")) {
             let group = "input:checkbox[name='snakeType']"; // get  group of checkboxes
@@ -38,6 +36,8 @@ function preload() {
         }
     });
 
+
+    // Color picker setup
     $('#colorP').minicolors({
         // animation speed
         animationSpeed: 50,
@@ -75,7 +75,7 @@ function preload() {
 
         // additional theme class
         theme:'default',
-        
+
         // Fires when the color picker is hidden.
         hide: function() {
             let c = $("#colorP").attr("value");
@@ -84,8 +84,26 @@ function preload() {
         }
     });
 
+    $("input:checkbox[name='difficulty']").on('click', function() { // Snake selection
+        let $box = $(this);
+        if ($box.is(":checked")) {
+            let group = "input:checkbox[name='difficulty']"; // get  group of checkboxes
+
+            $(group).prop("checked", false); // uncheck all
+            $box.prop("checked", true); // Check the selected
+
+            nApple = Number.parseInt($box.attr("value"));
+            
+            setup();
+        } 
+        else {
+            $box.prop("checked", true);
+        }
+    });
+
     $('#colorPdiv').hide();
-    $("input:checkbox")[0].checked = true; // On start, check the first option
+    $("input:checkbox[name='snakeType']")[0].checked = true; // On start, check the first option
+    $("input:checkbox[name='difficulty']")[0].checked = true; // On start, check the first option
 }
 
 function setup() {
